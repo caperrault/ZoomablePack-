@@ -1,0 +1,150 @@
+{
+ "name": "vis",
+ "children": [
+  {
+   "name": "Tech-tacular Entertainment Experiences",
+     "children": [
+      {"name": "Entertainment wearables", "size": 3938},
+      {"name": "360º video", "size": 3938},
+      {"name": "Drones", "size": 3938},
+      {"name": "Smart objects for viewer feedback", "size": 3938},
+      {"name": "Enhanced reality viewing", "size": 3938},
+      {"name": "Legal trends", "size": 3938},
+      {"name": "Vessel ad-free video", "size": 3938}
+     ]
+   },
+   {
+    "name": "Reward",
+      "children": [
+       {"name": "Fast laning", "size": 3938},
+       {"name": "Utility as marketing", "size": 3938},
+       {"name": "On-demand instant gratification", "size": 3938},
+       {"name": "Curencies of change", "size": 3938}
+      ]
+    },
+    {
+     "name": "Better Ad Formats",
+       "children": [
+        {"name": "Twitter mobile video", "size": 3938},
+        {"name": "New video ad channels", "size": 3938},
+        {"name": "Snapchat discover", "size": 3938},
+        {"name": "Online mobile ads like kiip", "size": 3938},
+        {"name": "Promoted pins", "size": 3938}
+       ]
+     },
+     {
+      "name": "Spend Small",
+        "children": [
+         {"name": "Digital Micro-payments", "size": 3938},
+         {"name": "Immediacy of purchase", "size": 3938},
+         {"name": "Driverless cars for deliveries", "size": 3938}
+        ]
+      },
+      {
+       "name": "'Better Way' Business",
+         "children": [
+          {"name": "Doing good, not just saying", "size": 3938},
+          {"name": "Brand Stands", "size": 3938},
+          {"name": "Social + Ethics", "size": 3938},
+          {"name": "Branded government", "size": 3938},
+          {"name": "Banking the unbanked", "size": 3938},
+          {"name": "'Better way' business triumph", "size": 3938},
+          {"name": "Sympathetic pricing", "size": 3938},
+          {"name": "Sustainability", "size": 3938},
+          {"name": "Keeping aspiratioons real", "size": 3938},
+          {"name": "Incremental saving & donation", "size": 3938},
+          {"name": "The long near term", "size": 3938},
+          {"name": "Clean slate brands", "size": 3938},
+          {"name": "Google Translate, Babel Fish", "size": 3938}
+         ]
+       },
+       {
+        "name": "Smart Celebrity Partnerships",
+          "children": [
+           {"name": "Custom content", "size": 3938},
+           {"name": "CommunityStructure", "size": 3938},
+           {"name": "Existing relationships", "size": 3938},
+           {"name": "Creative empowerment", "size": 3938},
+           {"name": "Strategic alignement", "size": 3938},
+           {"name": "Cross-population", "size": 3938},
+           {"name": "Influencer ramifications", "size": 3938},
+           {"name": "Credible celebrity endorsements", "size": 3938}
+          ]
+        },
+        {
+         "name": "Quantified Sport",
+           "children": [
+            {"name": "Athlete tech", "size": 3938},
+            {"name": "Cult of health", "size": 3938},
+            {"name": "Wellness", "size": 3938},
+            {"name": "Quantified self", "size": 3938},
+            {"name": "Digital sport", "size": 3938},
+            {"name": "Quantified player", "size": 3938},
+            {"name": "Reebok be more human", "size": 3938}
+           ]
+         },
+         {
+          "name": "Better Way Media",
+            "children": [
+             {"name": "Unbundling content", "size": 3938},
+             {"name": "Media consumption", "size": 3938},
+             {"name": "Cord cutting", "size": 3938},
+             {"name": "Sling TV", "size": 3938}
+            ]
+          },
+          {
+           "name": "Dark Social",
+             "children": [
+              {"name": "Private messaging", "size": 3938},
+              {"name": "No data", "size": 3938},
+              {"name": "Chance + Serendipity", "size": 3938},
+              {"name": "MergeEdge", "size": 3938},
+              {"name": "Twitter group messaging", "size": 3938},
+              {"name": "filter bubble", "size": 3938},
+              {"name": "Personal darknets,", "size": 3938},
+              {"name": "Anonymous", "size": 3938},
+              {"name": "Premium invisibilty", "size": 3938}
+             ]
+           },
+           {
+            "name": "Better Payments",
+              "children": [
+               {"name": "Social P2P payments", "size": 3938},
+               {"name": "Fair splitting", "size": 3938},
+               {"name": "Social commerce", "size": 3938},
+               {"name": "Crowdfunding", "size": 3938},
+               {"name": "Competition at the digital POS", "size": 3938},
+               {"name": "Palatable crypto currency", "size": 3938},
+               {"name": "Invisible payments", "size": 3938},
+               {"name": "Social P2P payments", "size": 3938},
+               {"name": "Fair splitting", "size": 3938},
+               {"name": "Crowdfunding", "size": 3938},
+               {"name": "Pay by Gmail", "size": 3938},
+               {"name": "Payments become 'COOC'", "size": 3938},
+               {"name": "Snap Cash", "size": 3938},
+               {"name": "Physical payments", "size": 3938},
+               {"name": "Facial recognition payments", "size": 3938},
+               {"name": "Electronification of commerce", "size": 3938}
+              ]
+            },
+            {
+             "name": "Wearable Utilities",
+               "children": [
+                {"name": "Facial recognition payments", "size": 3938},
+                {"name": "Wearable as information delivery", "size": 3938},
+                {"name": "Reimagining UI design", "size": 3938},
+                {"name": "Contextual stream as OS", "size": 3938},
+                {"name": "Apple video patent", "size": 3938},
+                {"name": "Pre-programmed wearable", "size": 3938},
+                {"name": "Wearables as sensors to learn about users", "size": 3938}
+               ]
+             },
+             {
+              "name": "Connecting with Sport",
+                "children": [
+                 {"name": "Casual piracy", "size": 3938},
+                 {"name": "FOMO", "size": 3938}
+                ]
+              }
+ ]
+}
