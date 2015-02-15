@@ -2,7 +2,7 @@
  "name": "vis",
  "children": [
   {
-   "name": "Tech-tacular Entertainment Experiences",
+   "name": "TECH-TACULAR ENTERTAINMENT EXPERIENCES",
      "children": [
       {"name": "Entertainment wearables", "size": 3938},
       {"name": "360º video", "size": 3938},
@@ -14,7 +14,7 @@
      ]
    },
    {
-    "name": "Reward",
+    "name": "REWARD",
       "children": [
        {"name": "Fast laning", "size": 3938},
        {"name": "Utility as marketing", "size": 3938},
@@ -23,7 +23,7 @@
       ]
     },
     {
-     "name": "Better Ad Formats",
+     "name": "BETTER AD FORMATS",
        "children": [
         {"name": "Twitter mobile video", "size": 3938},
         {"name": "New video ad channels", "size": 3938},
@@ -33,7 +33,7 @@
        ]
      },
      {
-      "name": "Spend Small",
+      "name": "SPEND SMALL",
         "children": [
          {"name": "Digital Micro-payments", "size": 3938},
          {"name": "Immediacy of purchase", "size": 3938},
@@ -41,7 +41,7 @@
         ]
       },
       {
-       "name": "'Better Way' Business",
+       "name": "BETTER WAY BUSINESS",
          "children": [
           {"name": "Doing good, not just saying", "size": 3938},
           {"name": "Brand Stands", "size": 3938},
@@ -59,7 +59,7 @@
          ]
        },
        {
-        "name": "Smart Celebrity Partnerships",
+        "name": "SMART CELEBRITY PARTNERSHIPS",
           "children": [
            {"name": "Custom content", "size": 3938},
            {"name": "CommunityStructure", "size": 3938},
@@ -72,7 +72,7 @@
           ]
         },
         {
-         "name": "Quantified Sport",
+         "name": "QUANTIFIED SPORT",
            "children": [
             {"name": "Athlete tech", "size": 3938},
             {"name": "Cult of health", "size": 3938},
@@ -84,7 +84,7 @@
            ]
          },
          {
-          "name": "Better Way Media",
+          "name": "BETTER WAY MEDIA",
             "children": [
              {"name": "Unbundling content", "size": 3938},
              {"name": "Media consumption", "size": 3938},
@@ -93,7 +93,7 @@
             ]
           },
           {
-           "name": "Dark Social",
+           "name": "DARK SOCIAL",
              "children": [
               {"name": "Private messaging", "size": 3938},
               {"name": "No data", "size": 3938},
@@ -107,7 +107,7 @@
              ]
            },
            {
-            "name": "Better Payments",
+            "name": "BETTER PAYMENTS",
               "children": [
                {"name": "Social P2P payments", "size": 3938},
                {"name": "Fair splitting", "size": 3938},
@@ -128,7 +128,7 @@
               ]
             },
             {
-             "name": "Wearable Utilities",
+             "name": "WEARABLE UTILITIES",
                "children": [
                 {"name": "Facial recognition payments", "size": 3938},
                 {"name": "Wearable as information delivery", "size": 3938},
@@ -140,7 +140,7 @@
                ]
              },
              {
-              "name": "Connecting with Sport",
+              "name": "CONNECTING WITH SPORT",
                 "children": [
                  {"name": "Casual piracy", "size": 3938},
                  {"name": "FOMO", "size": 3938}

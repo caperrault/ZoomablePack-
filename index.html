@@ -6,19 +6,18 @@
   cursor: pointer;
 }
 
-.node:hover {
-  stroke: #000;
-  stroke-width: 1.5px;
-}
+/*.node:hover {
+  fillOpacity: 0.8;
+}*/
 
 .node--leaf {
   fill: white;
 }
 
 .label {
-  font: 11px "Myriad Pro Light", "Myriad Pro", Helvetica, Arial, sans-serif;
+  font: 12px "Myriad Pro Light", "Myriad Pro", Helvetica, Arial, sans-serif;
   text-anchor: middle;
-  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+  /*text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;*/
 }
 
 .label,
@@ -32,7 +31,7 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var margin = 20,
+var margin = 0,
     diameter = 960;
 
 var color = d3.scale.linear()
@@ -48,8 +47,8 @@ var pack = d3.layout.pack()
 var svg = d3.select("body").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
-  .append("g")
-    .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+    .append("g")
+    .attr("transform", "translate(" + diameter / 2 + "," + (diameter - 100) / 2 + ")");
 
 d3.json("trends.json", function(error, root) {
   if (error) return console.error(error);
@@ -63,17 +62,19 @@ d3.json("trends.json", function(error, root) {
     .enter().append("circle")
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
       //.style("fill", function(d) { return d.children ? color(d.depth) : null; })
-      .style("stroke", "grey")
-    //  .style("fill", "#fff")
+      //.style("stroke", "grey")
+      //.style("fill", "#fff")
       .style("fill", function(d) {
-        if (d.depth===0) { return "red";} else {return "blue";}
+        if (d.depth===2) { return "lightGray";}
+        //if (d.depth===1) { return "red";}
+        else {return "white";}
       })
-      .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation();
-        console.log(d.depth); });
+      .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation();});
 
   var text = svg.selectAll("text")
       .data(nodes)
-    .enter().append("text")
+      .enter()
+      .append("text")
       .attr("class", "label")
       .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
       .style("display", function(d) { return d.parent === root ? null : "none"; })
@@ -83,7 +84,6 @@ d3.json("trends.json", function(error, root) {
 
   d3.select("body")
       .on("click", function() { zoom(root); });
-
   zoomTo([root.x, root.y, root.r * 2 + margin]);
 
   function zoom(d) {
