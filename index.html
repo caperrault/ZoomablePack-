@@ -65,8 +65,18 @@ d3.json("trends.json", function(error, root) {
       //.style("stroke", "grey")
       //.style("fill", "#fff")
       .style("fill", function(d) {
-        if (d.depth===2) { return "lightGray";}
-        //if (d.depth===1) { return "red";}
+        if (d.depth===2 && d.parent.name==="REWARD") { return "rgb(65,190,171)";}
+       else if (d.depth===2 && d.parent.name==="TECH-TACULAR ENTERTAINMENT EXPERIENCES") { return "rgb(234,161,62)";}
+       else if (d.depth===2 && d.parent.name==="BETTER AD FORMATS") { return "rgb(56,126,193)";}
+       else if (d.depth===2 && d.parent.name==="SPEND SMALL") { return "rgb(102,99,172)";}
+       else if (d.depth===2 && d.parent.name==="BETTER WAY BUSINESS") { return "rgb(187,37,101)";}
+       else if (d.depth===2 && d.parent.name==="SMART CELEBRITY PARTNERSHIPS") { return "rgb(102,100,173)";}
+       else if (d.depth===2 && d.parent.name==="QUANTIFIED SPORT") { return "rgb(119,91,93)";}
+       else if (d.depth===2 && d.parent.name==="BETTER WAY MEDIA") { return "rgb(101,40,113)";}
+       else if (d.depth===2 && d.parent.name==="DARK SOCIAL") { return "rgb(208,107,169)";}
+       else if (d.depth===2 && d.parent.name==="BETTER PAYMENTS") { return "rgb(233,31,51)";}
+       else if (d.depth===2 && d.parent.name==="WEARABLE UTILITIES") { return "rgb(246,139,71)";}
+       else if (d.depth===2 && d.parent.name==="CONNECTING WITH SPORT") { return "rgb(56,100,193)";}
         else {return "white";}
       })
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation();});
