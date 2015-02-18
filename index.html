@@ -2,6 +2,18 @@
 <meta charset="utf-8">
 <style>
 
+svg {
+  float:right;
+}
+
+h1 {
+  font: 36px "Myriad Pro Light", "Myriad Pro", Helvetica, Arial, sans-serif;
+}
+
+#infoBox {
+  float:left;
+}
+
 .node {
   cursor: pointer;
 }
@@ -28,24 +40,29 @@
 
 </style>
 <body>
+
+<div id="infoBox">
+<h1>Visa Trends Lens </h1>
+</div>
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 var margin = 0,
     diameter = 960;
 
-var color = d3.scale.linear()
+/*var color = d3.scale.linear()
     .domain([0, 5])
     .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
-    .interpolate(d3.interpolateHcl);
+    .interpolate(d3.interpolateHcl);*/
 
 var pack = d3.layout.pack()
     .padding(2)
     .size([diameter - margin, diameter - margin])
     .value(function(d) { return d.size; })
 
-var svg = d3.select("body").append("svg")
-    .attr("width", diameter)
+var svg = d3.select("body").append("svg:svg")
+    .attr("width", 1300)
     .attr("height", diameter)
     .append("g")
     .attr("transform", "translate(" + diameter / 2 + "," + (diameter - 100) / 2 + ")");
@@ -59,13 +76,15 @@ d3.json("trends.json", function(error, root) {
 
   var circle = svg.selectAll("circle")
       .data(nodes)
-    .enter().append("circle")
+      .enter()
+      .append("svg:circle")
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
       //.style("fill", function(d) { return d.children ? color(d.depth) : null; })
       //.style("stroke", "grey")
       //.style("fill", "#fff")
+      .style("opacity", 0.8)
       .style("fill", function(d) {
-        if (d.depth===2 && d.parent.name==="REWARD") { return "rgb(65,190,171)";}
+       if (d.depth===2 && d.parent.name==="REWARD") { return "rgb(65,190,171)";}
        else if (d.depth===2 && d.parent.name==="TECH-TACULAR ENTERTAINMENT EXPERIENCES") { return "rgb(234,161,62)";}
        else if (d.depth===2 && d.parent.name==="BETTER AD FORMATS") { return "rgb(56,126,193)";}
        else if (d.depth===2 && d.parent.name==="SPEND SMALL") { return "rgb(102,99,172)";}
@@ -77,20 +96,38 @@ d3.json("trends.json", function(error, root) {
        else if (d.depth===2 && d.parent.name==="BETTER PAYMENTS") { return "rgb(233,31,51)";}
        else if (d.depth===2 && d.parent.name==="WEARABLE UTILITIES") { return "rgb(246,139,71)";}
        else if (d.depth===2 && d.parent.name==="CONNECTING WITH SPORT") { return "rgb(56,100,193)";}
-        else {return "white";}
+       else {return "white";}
       })
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation();});
+
+      var rect = svg.selectAll("rect")
+          .data(nodes)
+          .enter()
+          .append("svg:rect")
+          .attr("width", 100)
+          .attr("height", 30)
+          .style("display", function(d) { return d.parent === root ? null : "none"; })
+          .style("fill", "#ccc")
+          .style("fill-opacity", 1)
+          .style("stroke", "#666")
+          .style("stroke-width", "1.5px");
+
+  /*var textRect = svg.append("textRect")
+                    .attr("width", 600)
+                    .attr("height", 20)
+                    .style("fill", "black");
+                  //  .style("display", function(d) { return d.parent === root ? null : "none"; });*/
 
   var text = svg.selectAll("text")
       .data(nodes)
       .enter()
-      .append("text")
+      .append("svg:text")
       .attr("class", "label")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
+    //  .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
       .style("display", function(d) { return d.parent === root ? null : "none"; })
       .text(function(d) { return d.name; });
 
-  var node = svg.selectAll("circle,text");
+  var node = svg.selectAll("circle,text,rect");
 
   d3.select("body")
       .on("click", function() { zoom(root); });
@@ -106,6 +143,12 @@ d3.json("trends.json", function(error, root) {
           return function(t) { zoomTo(i(t)); };
         });
 
+    transition.selectAll("rect")
+          .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
+            .style("fill-opacity", function(d) { return d.parent === focus ? 1 : 0; })
+            .each("start", function(d) { if (d.parent === focus) this.style.display = "inline"; })
+            .each("end", function(d) { if (d.parent !== focus) this.style.display = "none"; });
+
     transition.selectAll("text")
       .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
         .style("fill-opacity", function(d) { return d.parent === focus ? 1 : 0; })
@@ -117,6 +160,8 @@ d3.json("trends.json", function(error, root) {
     var k = diameter / v[2]; view = v;
     node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
     circle.attr("r", function(d) { return d.r * k; });
+    rect.attr("y", function(d) { return -d.r * k; });
+    rect.attr("x", function(d) { return -d.r * k; });
   }
 });
 
