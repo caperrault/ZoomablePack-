@@ -100,7 +100,7 @@ d3.json("trends.json", function(error, root) {
       })
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation();});
 
-      var rect = svg.selectAll("rect")
+  var rect = svg.selectAll("rect")
           .data(nodes)
           .enter()
           .append("svg:rect")
@@ -109,14 +109,7 @@ d3.json("trends.json", function(error, root) {
           .style("display", function(d) { return d.parent === root ? null : "none"; })
           .style("fill", "#ccc")
           .style("fill-opacity", 1)
-          .style("stroke", "#666")
-          .style("stroke-width", "1.5px");
-
-  /*var textRect = svg.append("textRect")
-                    .attr("width", 600)
-                    .attr("height", 20)
-                    .style("fill", "black");
-                  //  .style("display", function(d) { return d.parent === root ? null : "none"; });*/
+          .style("stroke-width", "0px");
 
   var text = svg.selectAll("text")
       .data(nodes)
@@ -160,8 +153,13 @@ d3.json("trends.json", function(error, root) {
     var k = diameter / v[2]; view = v;
     node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
     circle.attr("r", function(d) { return d.r * k; });
-    rect.attr("y", function(d) { return -d.r * k; });
-    rect.attr("x", function(d) { return -d.r * k; });
+    rect.attr("x", -50)
+    rect.attr("y", -15)
+  //  var bbox = text.node().getBBox();
+  //  rect.attr("x", bbox.x)
+  //  rect.attr("y", bbox.y)
+    //rect.attr("y", function(d) { return -d.r * k/4; });
+    //rect.attr("x", function(d) { return -d.r * k/4; });
   }
 });
 
