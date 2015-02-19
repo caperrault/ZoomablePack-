@@ -29,6 +29,7 @@ h1 {
 .label {
   font: 12px "Myriad Pro Light", "Myriad Pro", Helvetica, Arial, sans-serif;
   text-anchor: middle;
+  fill: white;
   /*text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;*/
 }
 
@@ -59,7 +60,7 @@ var margin = 0,
 var pack = d3.layout.pack()
     .padding(2)
     .size([diameter - margin, diameter - margin])
-    .value(function(d) { return d.size; })
+    .value(function(d) { return d.size; });
 
 var svg = d3.select("body").append("svg:svg")
     .attr("width", 1300)
@@ -104,10 +105,8 @@ d3.json("trends.json", function(error, root) {
           .data(nodes)
           .enter()
           .append("svg:rect")
-          .attr("width", 100)
-          .attr("height", 30)
           .style("display", function(d) { return d.parent === root ? null : "none"; })
-          .style("fill", "#ccc")
+          .style("fill", "#000")
           .style("fill-opacity", 1)
           .style("stroke-width", "0px");
 
@@ -118,7 +117,10 @@ d3.json("trends.json", function(error, root) {
       .attr("class", "label")
     //  .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
       .style("display", function(d) { return d.parent === root ? null : "none"; })
-      .text(function(d) { return d.name; });
+      .text(function(d) { return d.name; })
+      .each(function(d) {
+        d.width = this.getBBox().width;
+      });
 
   var node = svg.selectAll("circle,text,rect");
 
@@ -153,8 +155,12 @@ d3.json("trends.json", function(error, root) {
     var k = diameter / v[2]; view = v;
     node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
     circle.attr("r", function(d) { return d.r * k; });
-    rect.attr("x", -50)
-    rect.attr("y", -15)
+    var bbox = text.node().getBBox();
+    //rect.attr("x", bbox.x)
+    rect.attr("x", function(d) { return -d.width/2-5; })
+        .attr("y", -13)
+        .attr("width", function(d) { return d.width+10; })
+        .attr("height", 20)
   //  var bbox = text.node().getBBox();
   //  rect.attr("x", bbox.x)
   //  rect.attr("y", bbox.y)

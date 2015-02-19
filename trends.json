@@ -2,7 +2,7 @@
  "name": "vis",
  "children": [
   {
-   "name": "TECH-TACULAR ENTERTAINMENT EXPERIENCES",
+   "name": "TECH-TACULAR ENTERTAINMENT EXPERIENCES","size": 10000,
      "children": [
       {"name": "Entertainment wearables", "size": 3938},
       {"name": "360º video", "size": 3938},
