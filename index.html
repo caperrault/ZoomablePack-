@@ -52,11 +52,6 @@ h1 {
 var margin = 0,
     diameter = 960;
 
-/*var color = d3.scale.linear()
-    .domain([0, 5])
-    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
-    .interpolate(d3.interpolateHcl);*/
-
 var pack = d3.layout.pack()
     .padding(2)
     .size([diameter - margin, diameter - margin])
@@ -105,10 +100,10 @@ d3.json("trends.json", function(error, root) {
           .data(nodes)
           .enter()
           .append("svg:rect")
-          .style("display", function(d) { return d.parent === root ? null : "none"; })
           .style("fill", "#000")
           .style("fill-opacity", 1)
-          .style("stroke-width", "0px");
+          .style("stroke-width", "0px")
+          .style("display", function(d) { return d.parent === root ? null : "none"; });
 
   var text = svg.selectAll("text")
       .data(nodes)
@@ -118,9 +113,7 @@ d3.json("trends.json", function(error, root) {
     //  .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
       .style("display", function(d) { return d.parent === root ? null : "none"; })
       .text(function(d) { return d.name; })
-      .each(function(d) {
-        d.width = this.getBBox().width;
-      });
+      .each(function(d) { d.width = this.getBBox().width;});
 
   var node = svg.selectAll("circle,text,rect");
 
@@ -155,17 +148,13 @@ d3.json("trends.json", function(error, root) {
     var k = diameter / v[2]; view = v;
     node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
     circle.attr("r", function(d) { return d.r * k; });
-    var bbox = text.node().getBBox();
-    //rect.attr("x", bbox.x)
     rect.attr("x", function(d) { return -d.width/2-5; })
-        .attr("y", -13)
-        .attr("width", function(d) { return d.width+10; })
-        .attr("height", 20)
-  //  var bbox = text.node().getBBox();
-  //  rect.attr("x", bbox.x)
-  //  rect.attr("y", bbox.y)
-    //rect.attr("y", function(d) { return -d.r * k/4; });
-    //rect.attr("x", function(d) { return -d.r * k/4; });
+        .attr("y", -14)
+        .attr("width", function(d) {if (d.depth===1) { return d.width+10; } else {return 0; }})
+        .attr("height", 20);
+      //  .style("display", function(d) { if (d.depth===0 && d.parent !== root) { return "none";}})
+      //  .style("display", function(d) { if (d.depth===2 && d.parent !== root) { return "none";}});
+      //  .style("display", function(d) { return d.parent === root ? null : "none"; });
   }
 });
 
