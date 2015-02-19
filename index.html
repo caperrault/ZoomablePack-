@@ -14,16 +14,17 @@ h1 {
   float:left;
 }
 
+rect,
 .node {
   cursor: pointer;
 }
 
-/*.node:hover {
-  fillOpacity: 0.8;
-}*/
+.node:hover {
+  fillOpacity: 1;
+}
 
 .node--leaf {
-  fill: white;
+  fill: red;
 }
 
 .label {
@@ -40,6 +41,7 @@ h1 {
 .selectedPack {
   opacity: 0.8;
 }
+
 
 .label,
 .node--root,
@@ -93,7 +95,6 @@ d3.json("trends.json", function(error, root) {
       .append("svg:circle")
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
       .classed("pack", true)
-      .classed("selectedPack", function(d) {return selPack === d.name;})
       //.style("fill", function(d) { return d.children ? color(d.depth) : null; })
       //.style("stroke", "grey")
       //.style("fill", "#fff")
@@ -113,8 +114,8 @@ d3.json("trends.json", function(error, root) {
        else if (d.depth===2 && d.parent.name==="CONNECTING WITH SPORT") { return "rgb(56,100,193)";}
        else {return "white";}
      })
-     .on("click", function(d) { selPack = d.name; if (focus !== d) zoom(d), d3.event.stopPropagation(); console.log(selPack)});
-  //   .style("opacity", function(d) { if (selPack === d.name) {return 0.8;} else {return 0.2;}});
+     .classed("selectedPack", function(d) {return selPack === d.name;})
+     .on("click", function(d) { selPack = d.name; if (focus !== d) zoom(d), d3.event.stopPropagation(); console.log(d.parent.name)});
 
   var rect = svg.selectAll("rect")
           .data(nodes)
@@ -123,7 +124,8 @@ d3.json("trends.json", function(error, root) {
           .style("fill", "#000")
           .style("fill-opacity", 1)
           .style("stroke-width", "0px")
-          .style("display", function(d) { return d.parent === root ? null : "none"; });
+          .style("display", function(d) { return d.parent === root ? null : "none"; })
+          .on("click", function(d) { selPack = d.parent.name; if (focus !== d) zoom(d), d3.event.stopPropagation(); console.log(selPack)});
 
   var text = svg.selectAll("text")
       .data(nodes)
